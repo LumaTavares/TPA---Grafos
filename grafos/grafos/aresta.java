@@ -1,21 +1,21 @@
 package grafos.grafos;
 
-public class aresta<T> {
-    private vertice<T> origem;
-    private vertice<T> destino;
+public class Aresta<T> {
+    private Vertice<T> origem;
+    private Vertice<T> destino;
     private float peso; // peso da aresta 
 
-    public aresta(vertice<T> origem, vertice<T> destino, float peso) {
+    public Aresta(Vertice<T> origem, Vertice<T> destino, float peso) {
         this.origem = origem;
         this.destino = destino;
         this.peso = peso;
     }
 
-    public vertice<T> getOrigem() {
+    public Vertice<T> getOrigem() {
         return origem;
     }
 
-    public vertice<T> getDestino() {
+    public Vertice<T> getDestino() {
         return destino;
     }
 

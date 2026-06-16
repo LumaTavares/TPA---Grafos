@@ -2,11 +2,11 @@ package grafos.grafos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vertice<T> {
+public class Vertice<T> {
     private T valor;
-    private List<aresta<T>> arestas; // Lista de arestas conectadas a este vértice
+    private List<Aresta<T>> arestas; // Lista de arestas conectadas a este vértice
     
-    public vertice(T valor){
+    public Vertice(T valor){
         this.valor = valor;
         this.arestas = new ArrayList<>();
     }
@@ -19,11 +19,11 @@ public class vertice<T> {
         this.valor = valor;
     }
 
-    public List<aresta<T>> getArestas() {
+    public List<Aresta<T>> getArestas() {
         return arestas;
     }
     
-    public void addAresta(aresta<T> a) {
+    public void addAresta(Aresta<T> a) {
         this.arestas.add(a);
     }
 }
