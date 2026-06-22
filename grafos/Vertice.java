@@ -1,4 +1,4 @@
-package grafos.grafos;
+package grafos;
 import java.util.ArrayList;
 import java.util.List;
 

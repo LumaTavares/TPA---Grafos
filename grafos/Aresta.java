@@ -1,4 +1,4 @@
-package grafos.grafos;
+package grafos;
 
 public class Aresta<T> {
     private Vertice<T> origem;
