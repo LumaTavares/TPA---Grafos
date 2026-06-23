@@ -123,6 +123,9 @@ public class RecService{
         rede.detectarComunidade();
     }    
 
-
+    public List<Funcionario> listarFuncs() {
+        // Retorna todos os funcionários guardados no map como uma lista
+        return new ArrayList<>(funcionariosMap.values());
+    }
 
 }
