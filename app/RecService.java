@@ -24,15 +24,28 @@ public class RecService{
         this.funcionariosMap = new HashMap<>();
     }
 
-    public boolean addNovaColaboracao(String nomeFunc1, long cpfFunc1, String nomeFunc2, long cpfFunc2, int peso){
+    public boolean addNovaColaboracao(long cpfFunc1, long cpfFunc2, int peso){
 
-        Funcionario func1 = new Funcionario(nomeFunc1, cpfFunc1);
-        Funcionario func2 = new Funcionario(nomeFunc2, cpfFunc2);
+        if (cpfFunc1 == cpfFunc2) { //impede colaboracao de um funcionario com ele mesmo
+            return false;
+        }
+
+        if (peso <= 0) { //peso deve representar ao menos 1 projeto em comum
+            return false;
+        }
+
+        //busca os funcionarios ja cadastrados pelo CPF no map
+        Funcionario func1 = funcionariosMap.get(String.valueOf(cpfFunc1));
+        Funcionario func2 = funcionariosMap.get(String.valueOf(cpfFunc2));
+
+        if (func1 == null || func2 == null) { //verifca se ambos vertices ja existem
+            return false;
+        }
 
         Vertice<Funcionario> vf1 = rede.buscarVertice(func1);
         Vertice<Funcionario> vf2 = rede.buscarVertice(func2);
         
-        if (vf1 == null || vf2 == null) { //verifca se ambos vertices ja existem
+        if (vf1 == null || vf2 == null) { //verifca se ambos vertices ja existem no grafo
             return false;
         }
         //verificar se ja existe colaboracao (aresta)
@@ -126,6 +139,11 @@ public class RecService{
     public List<Funcionario> listarFuncs() {
         // Retorna todos os funcionários guardados no map como uma lista
         return new ArrayList<>(funcionariosMap.values());
+    }
+
+    public boolean funcExiste(long cpf) {
+        //verifica se um funcionario com o cpf informado esta cadastrado
+        return funcionariosMap.containsKey(String.valueOf(cpf));
     }
 
 }

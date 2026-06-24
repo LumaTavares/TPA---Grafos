@@ -117,8 +117,10 @@ public class Grafo<T> {
         
         System.out.println("\n========================================\n");
     }
+    
+    
     //codigo para o algoritmo de louvain
-  public void detectarComunidade(){
+    public void detectarComunidade(){
         int n = vertices.size(); //numero de vertices
         if (n==0){
             System.out.println("Grafo vazio, nao ha comunidades a detectar.");
@@ -235,4 +237,9 @@ public class Grafo<T> {
         }
         System.out.println("===================================================\n");
     }
+
+
+
+
 }
+
