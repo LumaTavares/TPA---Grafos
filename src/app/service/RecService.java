@@ -1,5 +1,6 @@
-package app;
-import grafos.*;
+package app.service;
+import app.model.grafos.*;
+import app.model.domain.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.util.*;
 public class RecService{
 
     private Grafo<Funcionario> rede;
-    private Map<String, Funcionario> funcionariosMap; //buscar mais rapido pelo id, tipo um dict
+    private Map<Long, Funcionario> funcionariosMap; //buscar mais rapido pelo id, tipo um dict
     //private
 
     /*
@@ -35,8 +36,8 @@ public class RecService{
         }
 
         //busca os funcionarios ja cadastrados pelo CPF no map
-        Funcionario func1 = funcionariosMap.get(String.valueOf(cpfFunc1));
-        Funcionario func2 = funcionariosMap.get(String.valueOf(cpfFunc2));
+        Funcionario func1 = funcionariosMap.get(cpfFunc1);
+        Funcionario func2 = funcionariosMap.get(cpfFunc2);
 
         if (func1 == null || func2 == null) { //verifca se ambos vertices ja existem
             return false;
@@ -69,7 +70,7 @@ public class RecService{
     public boolean addNovoFunc(String nome, long cpf){
         //retorna false se ja existir no grafo
         Funcionario novo = new Funcionario(nome, cpf);
-        funcionariosMap.put(String.valueOf(cpf), novo);
+        funcionariosMap.put(cpf, novo);
         return rede.addVertice(novo);
     }
 
@@ -102,7 +103,7 @@ public class RecService{
                 cpf = Long.parseLong(partes[1]);
 
                 Funcionario novo = new Funcionario(nome, cpf);
-                funcionariosMap.put(String.valueOf(cpf), novo);
+                funcionariosMap.put(cpf, novo);
                 rede.addVertice(novo);//add vertice com func ao grafo
             }
 
@@ -117,8 +118,8 @@ public class RecService{
                 cpfFunc2 = Long.parseLong(partes[1]);
                 peso = Integer.parseInt(partes[2]);
                 
-                Funcionario f1 = funcionariosMap.get(String.valueOf(cpfFunc1));
-                Funcionario f2 = funcionariosMap.get(String.valueOf(cpfFunc2));
+                Funcionario f1 = funcionariosMap.get(cpfFunc1);
+                Funcionario f2 = funcionariosMap.get(cpfFunc2);
                 
                 rede.addAresta(f1, f2, peso);
             }
@@ -136,14 +137,23 @@ public class RecService{
         rede.detectarComunidade();
     }    
 
-    public List<Funcionario> listarFuncs() {
-        // Retorna todos os funcionários guardados no map como uma lista
-        return new ArrayList<>(funcionariosMap.values());
+    public void listarFuncs() {
+        //imprime todos os funcionários
+        List<Funcionario> funcs =  new ArrayList<>(funcionariosMap.values());
+        System.out.println("--- Funcionários cadastrados ---");
+        for (Funcionario f : funcs)
+            System.out.println("  " + f);
+        System.out.println("--------------------------------");
+
     }
 
     public boolean funcExiste(long cpf) {
         //verifica se um funcionario com o cpf informado esta cadastrado
-        return funcionariosMap.containsKey(String.valueOf(cpf));
+        return funcionariosMap.containsKey(cpf);
     }
 
+
+    public int getQtdFuncionarios(){
+        return rede.getVertices().size();
+    }
 }

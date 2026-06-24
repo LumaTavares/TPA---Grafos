@@ -1,4 +1,4 @@
-package grafos;
+package app.model.grafos;
 import java.util.ArrayList;
 import java.util.List;
 

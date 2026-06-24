@@ -1,4 +1,4 @@
-package grafos; // Certifique-se de que o package corresponde ao seu projeto
+package app.model.grafos; // Certifique-se de que o package corresponde ao seu projeto
 
 public class TesteLouvain {
 

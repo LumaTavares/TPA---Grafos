@@ -1,6 +1,6 @@
-package app;
-import java.util.List;
+package app.view;
 import java.util.Scanner;
+import app.service.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class Main {
         System.out.println("      Recomendação de Colaboradores");
         System.out.println("\n\n\nCarregando rede de projetos...\n");
         
-        String path = "entrada/entrada.txt";
+        String path = "entrada.txt";
         try {
             serv.carregarDados(path);
         } catch (Exception e) {
@@ -42,15 +42,11 @@ public class Main {
 
                     case 2://adicionar colaboracao entre funcionarios ja cadastrados
                         //lista os funcionarios antes para o usuario escolher pelos CPFs
-                        List<Funcionario> funcs = serv.listarFuncs();
-                        if (funcs.size() < 2){
+                        serv.listarFuncs();
+                        if (serv.getQtdFuncionarios(    ) < 2){
                             System.out.println("É necessário ao menos 2 funcionários cadastrados para adicionar uma colaboração.\n");
                             break;
                         }
-                        System.out.println("--- Funcionários cadastrados ---");
-                        for (Funcionario f : funcs)
-                            System.out.println("  " + f);
-                        System.out.println("--------------------------------");
 
                         System.out.print("CPF do Colaborador A: "); long cpf1 = Long.parseLong(scanner.nextLine());
                         System.out.print("CPF do Colaborador B: "); long cpf2 = Long.parseLong(scanner.nextLine());
@@ -63,7 +59,7 @@ public class Main {
                         System.out.print("Quantidade de projetos em comum (Peso): "); int peso = Integer.parseInt(scanner.nextLine());
 
                         if (peso <= 0){
-                            System.out.println("Erro: o peso deve ser maior que zero.\n");
+                            System.out.println("Erro: Insira uma quantidade válida.\n");
                             break;
                         }
 

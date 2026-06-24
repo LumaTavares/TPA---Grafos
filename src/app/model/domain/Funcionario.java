@@ -1,4 +1,4 @@
-package app;
+package app.model.domain;
 //import colecao.IColecao;
 
 public class Funcionario {

@@ -1,4 +1,4 @@
-package grafos;
+package app.model.grafos;
 
 public class Aresta<T> {
     private Vertice<T> origem;
