@@ -89,15 +89,17 @@ O exemplo em `TesteLouvain.java` simula uma rede de colaboradores divididos em d
 
 O algoritmo de Louvain identifica corretamente os dois grupos distintos.
 
+
+## 📄 Relatório Completo
+
+O relatório completo com todas as análises matemáticas e empíricas está disponível em:
+[Link para o documento](https://docs.google.com/document/d/14XyOFkG7lmELZgzymSAUCZtSsDhEd_BTvVdOceKGX9A/edit?tab=t.0)
+
 ## 👥 Autores
 
-Trabalho Prático de Algoritmos - Grafos
+Larissa Santos
+Luma Tavares
+Sofia Nascimento
 
-## 📚 Referências
-
-- Blondel, V. D., et al. (2008). "Fast unfolding of communities in large networks"
-- Cormen, T. H., et al. "Introduction to Algorithms"
-
----
 
 **Nota:** Este projeto implementa a Fase 1 do algoritmo de Louvain (otimização local de modularidade), adequada para grafos de pequeno e médio porte.
